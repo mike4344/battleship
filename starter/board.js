@@ -61,27 +61,41 @@ class Board {
         }
       })
     })
+    return count
     // console.log(count)
     // console.table(this.grid);
   }
 
   isValidMove(pos) {
+    if(pos[0] <= this.numRos && pos[1] <= this.numCols){
+      return true
+    }
+    return false
     // TODO: Take in an attack position (in the form of an array [row, col]) and
     // return true if the position is a valid move.
   }
 
   isGameOver() {
+    if(this.count() === 0){
+      return true;
+    }
     // TODO: Return true if the game is over (when all ships are hit).
   }
 
-  attack() {
+  attack(pos) {
+    let attackPosition = this.grid[pos[0]][pos[1]];
+    if (attackPosition === 0){
+      this.grid[pos[0]][pos[1]] = "m"
+    } else if (attackPosition === 's'){
+      this.grid[pos[0]][pos[1]] = "h"
+    }
+
     // TODO: Take in an attack position in the form of an array, [row, col], as
     // a parameter. Update this.grid depending on if the position is an empty
     // space or a damaged ship.
   }
 }
 let board = new Board(4, 4, 2);
-
 
 
 module.exports = Board;
