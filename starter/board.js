@@ -3,6 +3,9 @@ class Board {
     // TODO: Set up constructor that sets the numRos, numCols, and numShips.
     // TODO: Set this.grid equal to the return value of the instance method
     // populateGrid().
+    this.numRos = numRos
+    this.numCols = numCols
+    this.numShips = numShips
     this.grid = populateGrid(numRos, numCols, numShips)
 
   }
@@ -10,7 +13,6 @@ class Board {
   populateGrid(numRos, numCols, numShips) {
     // TODO: Using the instance variables numRows, numCols, and numShips, return
     // a 2D array representing the state of the board.
-
     let grid = [];
     for (let i = 0; i < numRos; i++) {
       grid.push([]);
@@ -34,6 +36,7 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
+
   }
 
   count() {
