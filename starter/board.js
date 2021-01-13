@@ -6,13 +6,14 @@ class Board {
     this.numRos = numRos
     this.numCols = numCols
     this.numShips = numShips
-    this.grid = populateGrid(numRos, numCols, numShips)
+    this.grid = this.populateGrid(numRos, numCols, numShips)
 
   }
 
   populateGrid(numRos, numCols, numShips) {
     // TODO: Using the instance variables numRows, numCols, and numShips, return
     // a 2D array representing the state of the board.
+
     let grid = [];
     for (let i = 0; i < numRos; i++) {
       grid.push([]);
@@ -29,6 +30,8 @@ class Board {
         grid[row][col] = "s"
       }
     }
+
+
     return grid
   }
 
@@ -36,11 +39,30 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
+    let gridCopy = [...this.grid];
+    gridCopy.forEach((rows, index1) => {
+      rows.forEach((cols, index2) => {
+        if (gridCopy[index1][index2] === "s") {
+          gridCopy[index1][index2] = 0;
+        }
+      })
+    })
+    //console.table(gridCopy);
 
   }
 
   count() {
     // TODO: Return the number of valid targets (ships) remaining.
+    let count = 0
+    this.grid.forEach((rows, index1) => {
+      rows.forEach((cols, index2) => {
+        if (this.grid[index1][index2] === "s") {
+          count++;
+        }
+      })
+    })
+    // console.log(count)
+    // console.table(this.grid);
   }
 
   isValidMove(pos) {
@@ -58,5 +80,8 @@ class Board {
     // space or a damaged ship.
   }
 }
+let board = new Board(4, 4, 2);
+
+
 
 module.exports = Board;
