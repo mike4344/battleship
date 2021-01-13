@@ -47,7 +47,7 @@ class Board {
         }
       })
     })
-    //console.table(gridCopy);
+    console.table(gridCopy);
 
   }
 
@@ -67,7 +67,7 @@ class Board {
   }
 
   isValidMove(pos) {
-    if(pos[0] <= this.numRos && pos[1] <= this.numCols){
+    if (pos[0] <= this.numRos && pos[1] <= this.numCols) {
       return true
     }
     return false
@@ -76,7 +76,7 @@ class Board {
   }
 
   isGameOver() {
-    if(this.count() === 0){
+    if (this.count() === 0) {
       return true;
     }
     // TODO: Return true if the game is over (when all ships are hit).
@@ -84,9 +84,9 @@ class Board {
 
   attack(pos) {
     let attackPosition = this.grid[pos[0]][pos[1]];
-    if (attackPosition === 0){
+    if (attackPosition === 0) {
       this.grid[pos[0]][pos[1]] = "m"
-    } else if (attackPosition === 's'){
+    } else if (attackPosition === 's') {
       this.grid[pos[0]][pos[1]] = "h"
     }
 
@@ -95,7 +95,7 @@ class Board {
     // space or a damaged ship.
   }
 }
-let board = new Board(4, 4, 2);
+// let board = new Board(4, 4, 2);
 
 
 module.exports = Board;

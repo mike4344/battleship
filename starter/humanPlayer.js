@@ -8,8 +8,13 @@ class HumanPlayer {
   }
 
   getMove(processMove) {
-    this.rl.question("what square woul you like to hit x,y", answer =>{
-      processMove(answer.split(","))
+    this.rl.question("what square woul you like to hit x,y", answer => {
+
+      let move = answer.split(",").map(num => Number(num));
+      console.log(move)
+
+
+      processMove(move)
     })
     // TODO: Ask the user for their move and process the answer using the rl
     // interface.Invoke the callback function (processMove), passing in
@@ -17,7 +22,7 @@ class HumanPlayer {
   }
 
   processGameOver(isWon, turns) {
-    if(isWon){
+    if (isWon) {
       console.log(`Congratulations you won in ${turns} turns.`);
     } else {
       console.log('you lose')
