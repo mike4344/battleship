@@ -1,13 +1,33 @@
 class Board {
-  constructor() {
+  constructor(numRos, numCols, numShips) {
     // TODO: Set up constructor that sets the numRos, numCols, and numShips.
     // TODO: Set this.grid equal to the return value of the instance method
     // populateGrid().
+    this.grid = populateGrid(numRos, numCols, numShips)
+
   }
 
-  populateGrid() {
+  populateGrid(numRos, numCols, numShips) {
     // TODO: Using the instance variables numRows, numCols, and numShips, return
     // a 2D array representing the state of the board.
+
+    let grid = [];
+    for (let i = 0; i < numRos; i++) {
+      grid.push([]);
+      for (let j = 0; j < numCols; j++) {
+        grid[i].push(0);
+      }
+    }
+    let i = 0;
+    while (i < numShips) {
+      let row = Math.floor(Math.random() * numRos)
+      let col = Math.floor(Math.random() * numCols)
+      if (grid[row][col] !== "s") {
+        i++
+        grid[row][col] = "s"
+      }
+    }
+    return grid
   }
 
   display() {
