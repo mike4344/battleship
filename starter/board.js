@@ -28,6 +28,7 @@ class Board {
       if (grid[row][col] !== "s") {
         i++
         grid[row][col] = "s"
+
       }
     }
 
@@ -39,7 +40,9 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
-    let gridCopy = [...this.grid];
+    let gridCopy = JSON.parse(JSON.stringify(this.grid))
+
+    //gridCopy.push(...this.grid)
     gridCopy.forEach((rows, index1) => {
       rows.forEach((cols, index2) => {
         if (gridCopy[index1][index2] === "s") {
@@ -48,16 +51,20 @@ class Board {
       })
     })
     console.table(gridCopy);
+    //console.table(this.grid)
 
   }
 
   count() {
-    // TODO: Return the number of valid targets (ships) remaining.
     let count = 0
+    // TODO: Return the number of valid targets (ships) remaining.
     this.grid.forEach((rows, index1) => {
       rows.forEach((cols, index2) => {
+        //console.log(this.grid[index1][index2])
         if (this.grid[index1][index2] === "s") {
+          // console.log("made it to count")
           count++;
+          // console.log(count)
         }
       })
     })
@@ -67,7 +74,8 @@ class Board {
   }
 
   isValidMove(pos) {
-    if (pos[0] <= this.numRos && pos[1] <= this.numCols) {
+    console.log("we made it here")
+    if (pos[0] < this.numRos && pos[1] < this.numCols) {
       return true
     }
     return false

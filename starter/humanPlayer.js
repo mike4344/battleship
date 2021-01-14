@@ -1,4 +1,6 @@
 const readline = require('readline')
+// const battleBoard = require("./game")
+
 class HumanPlayer {
   constructor() {
     this.rl = readline.createInterface(process.stdin, process.stdout)
@@ -11,7 +13,7 @@ class HumanPlayer {
     this.rl.question("what square woul you like to hit x,y", answer => {
 
       let move = answer.split(",").map(num => Number(num));
-      console.log(move)
+
 
 
       processMove(move)

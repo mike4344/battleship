@@ -1,4 +1,4 @@
-const Board = require("./board.js")
+const Board = require("./board")
 class BattleshipGame {
   constructor(human, numRow, numCol, numShip) {
     // TODO: Set up constructor to store reference to the humanPlayer and
@@ -20,12 +20,14 @@ class BattleshipGame {
     this.board.display()
   }
 
-  processMove(pos) {
+  processMove = (pos) => {
     // TODO: Detemerine if the move is valid. If so, invoke the attack method on
     //     the board instance and increment this.turns by 1. If the game is over,
     //     display the final status of the game and end the game. If not, play
     //     another turn. If the move is invalid, ask the player to input a valid
     //     position and play another turn.
+    // console.log(pos)
+    // console.log(this)
     if (this.board.isValidMove(pos)) {
       this.board.attack(pos);
       this.turns++
